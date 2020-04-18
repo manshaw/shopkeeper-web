@@ -38,11 +38,11 @@ function fetchData(childSnapshot) {
     var cell5 = row.insertCell(4);
     cell2.innerHTML = childSnapshot.child('17').child('Total').child('Outer').val();
     cell3.innerHTML = childSnapshot.child('17').child('Total').child('Pack').val();
-    cell4.innerHTML = childSnapshot.child('19').child('date').val();
-    cell5.innerHTML = childSnapshot.child('18').child('contactLess').val();
-    if(childSnapshot.child('18').child('contactLess').val()){
+    cell4.innerHTML = childSnapshot.child('19').child('Date').val();
+    cell5.innerHTML = childSnapshot.child('18').child('Contact Less Delivery').val();
+    if (childSnapshot.child('18').child('Contact Less Delivery').val()) {
         cell5.style.color = 'green'
-    }else{
+    } else {
         cell5.style.color = 'red'
     }
 }
@@ -58,7 +58,7 @@ function showDetail(rowID) {
         tableDetail.innerHTML = "";
         snapshot.forEach(function (childSnapshot) {
             childSnapshot.forEach(function (grandChild) {
-                if (grandChild.key === 'contactLess') {
+                if (grandChild.key === 'Contact Less Delivery') {
                     var rowCount = tableDetail.rows.length;
                     var row = tableDetail.insertRow(rowCount);
                     row.insertCell(0).innerHTML = grandChild.key;
@@ -72,7 +72,7 @@ function showDetail(rowID) {
                     } else {
                         row.cells[1].style.color = 'red'
                     }
-                } else if (grandChild.key === 'date') {
+                } else if (grandChild.key === 'Date') {
                     var rowCount = tableDetail.rows.length;
                     var row = tableDetail.insertRow(rowCount);
                     row.insertCell(0).innerHTML = grandChild.key;
