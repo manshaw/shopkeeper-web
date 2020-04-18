@@ -35,16 +35,18 @@ function fetchData(childSnapshot) {
     var cell2 = row.insertCell(2);
     var cell3 = row.insertCell(3);
     var cell4 = row.insertCell(4);
-    var cell5 = row.insertCell(4);
-    cell2.innerHTML = childSnapshot.child('17').child('Total').child('Outer').val();
-    cell3.innerHTML = childSnapshot.child('17').child('Total').child('Pack').val();
-    cell4.innerHTML = childSnapshot.child('19').child('Date').val();
+    var cell5 = row.insertCell(5);
+    var cell6 = row.insertCell(6);
+    cell2.innerHTML = childSnapshot.child('17').child('Total').child('Pack').val();
+    cell3.innerHTML = childSnapshot.child('17').child('Total').child('Outer').val();
+    cell4.innerHTML = childSnapshot.child('17').child('Total').child('SC(Box)').val();
     cell5.innerHTML = childSnapshot.child('18').child('Contact Less Delivery').val();
     if (childSnapshot.child('18').child('Contact Less Delivery').val()) {
         cell5.style.color = 'green'
     } else {
         cell5.style.color = 'red'
     }
+    cell6.innerHTML = childSnapshot.child('19').child('Date').val();
 }
 
 function showDetail(rowID) {
@@ -64,6 +66,7 @@ function showDetail(rowID) {
                     row.insertCell(0).innerHTML = grandChild.key;
                     row.insertCell(1).innerHTML = grandChild.val();
                     row.insertCell(2).innerHTML = "";
+                    row.insertCell(3).innerHTML = "";
                     row.style.backgroundColor = '#f2eeed';
                     row.cells[0].style.fontWeight = 'bold'
                     row.cells[1].style.fontWeight = 'bold'
@@ -81,22 +84,26 @@ function showDetail(rowID) {
                     row.cells[0].style.fontWeight = 'bold'
                     row.cells[1].style.fontWeight = 'bold'
                     row.insertCell(2).innerHTML = "";
+                    row.insertCell(2).innerHTML = "";
                 } else if (grandChild.key === 'Total') {
                     var rowCount = tableDetail.rows.length;
                     var row = tableDetail.insertRow(rowCount);
                     row.insertCell(0).innerHTML = grandChild.key;
-                    row.insertCell(1).innerHTML = grandChild.child('Outer').val();
-                    row.insertCell(2).innerHTML = grandChild.child('Pack').val();
+                    row.insertCell(1).innerHTML = grandChild.child('Pack').val();
+                    row.insertCell(2).innerHTML = grandChild.child('Outer').val();
+                    row.insertCell(3).innerHTML = grandChild.child('SC(Box)').val();
                     row.style.backgroundColor = '#f2eeed';
                     row.cells[0].style.fontWeight = 'bold'
                     row.cells[1].style.fontWeight = 'bold'
                     row.cells[2].style.fontWeight = 'bold'
+                    row.cells[3].style.fontWeight = 'bold'
                 } else {
                     var rowCount = tableDetail.rows.length;
                     var row = tableDetail.insertRow(rowCount);
                     row.insertCell(0).innerHTML = grandChild.key;
-                    row.insertCell(1).innerHTML = grandChild.child('Outer').val();
-                    row.insertCell(2).innerHTML = grandChild.child('Pack').val();
+                    row.insertCell(1).innerHTML = grandChild.child('Pack').val();
+                    row.insertCell(2).innerHTML = grandChild.child('Outer').val();
+                    row.insertCell(3).innerHTML = grandChild.child('SC(Box)').val();
                 }
             });
         });
